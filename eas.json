@@ -22,9 +22,7 @@
   "submit": {
     "production": {
       "android": {
-        "track": "production",
-        "releaseStatus": "inProgress",
-        "rollout": "100%"
+        "track": "internal"
       }
     }
   }
