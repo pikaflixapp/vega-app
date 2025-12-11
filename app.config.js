@@ -1,14 +1,27 @@
-import { ExpoConfig } from '@expo/config-types';
+const fs = require('fs');
 
-const config: ExpoConfig = {
-  // Existing code...
-  name: "Pikashow",
-  // Baaki sab...
-  extra: {
-    eas: {
-      projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Yahaan apna ID daalo
-    }
-  },
+const hasAndroidGoogleServices = fs.existsSync('./google-services.json');
+const hasIosGooglePlist = fs.existsSync('./GoogleService-Info.plist');
+
+module.exports = () => {
+  const plugins = [
+    './plugins/android-native-config.js',
+    './plugins/with-android-notification-icons.js',
+    // Baaki plugins...
+  ];
+
+  // Existing return object
+  return {
+    name: "Pikashow",
+    // Baaki config...
+    extra: {
+      // Existing extra fields agar hain
+      eas: {
+        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se copy kiya ID daalo
+      }
+    },
+    plugins,
+  };
 };
 
 // Dynamic Expo config to make Firebase optional for public clones
@@ -160,5 +173,6 @@ module.exports = () => {
     },
   };
 };
+
 
 
