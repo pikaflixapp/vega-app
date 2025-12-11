@@ -1,3 +1,91 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Linking, AppState, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';  // Vega mein yeh already hai, agar nahi toh add karo
+// Baaki sab existing imports yahan paste kar do (jaise screens, components etc.)
+
+// YEH NAYA UPDATED MONETAG LINK DAAL DO (dashboard se copy kiya hua)
+const MONETAG_SMARTLINK = 'https://otieu.com/4/10307400';  // Example: https://otieu.com/4/1234567?z=xyz
+
+export default function App() {
+  const [showAd, setShowAd] = useState(true);  // Ad screen pehle dikhao
+  const [timer, setTimer] = useState(20);  // 20 seconds countdown
+
+  useEffect(() => {
+    if (showAd) {
+      // Browser mein full ad open karo
+      Linking.openURL(MONETAG_SMARTLINK);
+
+      // 20 sec timer start
+      const interval = setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            setShowAd(false);  // Timer end, homepage open
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      // Back press detect (app active hone pe)
+      const subscription = AppState.addEventListener('change', (nextState) => {
+        if (nextState === 'active') {
+          Alert.alert('Ad Complete Karo!', 'Full offer dekh ke back aao – premium unlock ho jaayega!');
+        }
+      });
+
+      return () => {
+        clearInterval(interval);
+        subscription?.remove();
+      };
+    }
+  }, [showAd]);
+
+  if (showAd) {
+    // Loading screen with timer
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Unlocking Free Premium Streams...</Text>
+        <Text style={styles.timer}>Wait: {timer}s (Ad Loading)</Text>
+        <Text style={styles.info}>Browser mein ad open hui hai – dekh ke back press karo for full access!</Text>
+      </View>
+    );
+  }
+
+  // Original Vega app yahan (homepage, navigation etc.)
+  return (
+    <NavigationContainer>
+      {/* Tumhara poora existing app code yahan paste kar do – HomeScreen, movies list etc. */}
+      {/* Example: <HomeScreen /> */}
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#000'  // Black background Vega theme ke liye
+  },
+  text: { 
+    color: 'white', 
+    fontSize: 24, 
+    fontWeight: 'bold', 
+    marginBottom: 20 
+  },
+  timer: { 
+    color: 'red', 
+    fontSize: 30, 
+    marginBottom: 10 
+  },
+  info: { 
+    color: 'white', 
+    fontSize: 16, 
+    textAlign: 'center', 
+    paddingHorizontal: 20 
+  },
+});
 import React, {useEffect} from 'react';
 import Home from './screens/home/Home';
 import Info from './screens/home/Info';
