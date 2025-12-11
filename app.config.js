@@ -1,3 +1,16 @@
+import { ExpoConfig } from '@expo/config-types';
+
+const config: ExpoConfig = {
+  // Existing code...
+  name: "Pikashow",
+  // Baaki sab...
+  extra: {
+    eas: {
+      projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Yahaan apna ID daalo
+    }
+  },
+};
+
 // Dynamic Expo config to make Firebase optional for public clones
 // If google-services.json / GoogleService-Info.plist are absent, we skip RNFirebase plugins
 // and android/ios google services config so the app still builds and runs without Firebase.
@@ -147,4 +160,5 @@ module.exports = () => {
     },
   };
 };
+
 
