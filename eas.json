@@ -1,23 +1,20 @@
 {
   "cli": {
-    "version": ">= 5.2.0"
+    "version": ">= 5.2.0",
+    "appVersionSource": "remote"
   },
   "build": {
-    "base": {
-      "node": "20.0.0",
-      "env": {
-        "PLATFORM": "android"
-      }
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     },
     "preview": {
-      "extends": "base",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
-      "extends": "base",
       "android": {
         "buildType": "app-bundle"
       }
