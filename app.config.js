@@ -86,8 +86,8 @@ module.exports = () => {
 
   return {
     expo: {
-      name: 'Vega',
-      displayName: 'Vega',
+      name: 'Pikashow,
+      displayName: 'Pikashow,
       newArchEnabled: true,
       autolinking: {exclude: ['expo-splash-screen']},
       plugins,
@@ -101,7 +101,7 @@ module.exports = () => {
           : {}),
         minSdkVersion: 24,
         edgeToEdgeEnabled: true,
-        package: 'com.vega',
+        package: 'com.pikashow',
         versionCode: 155,
         permissions: [
           'FOREGROUND_SERVICE',
@@ -147,3 +147,4 @@ module.exports = () => {
     },
   };
 };
+
