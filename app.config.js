@@ -4,10 +4,10 @@ const hasAndroidGoogleServices = fs.existsSync('./google-services.json');
 const hasIosGooglePlist = fs.existsSync('./GoogleService-Info.plist');
 
 module.exports = () => {
-  const plugins = [];  // Empty array bana do (sab plugins hata do)
+  const plugins = [];  // Empty kar do – yeh error fix karega
 
   return {
-    name: "Pikashow",  // Yahan tum apna naya name daal sakte ho (jaise "PikaFlix")
+    name: "Pikashow",  // Yahan apna naya name daal do (jaise "PikaFlix" ya "Free Movies HD")
     slug: "pikashow",
     version: "1.0",
     orientation: "portrait",
@@ -32,16 +32,16 @@ module.exports = () => {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.zendacross.vega"  // Yahan tum apna package name change kar sakte ho agar chaaho
+      "package": "com.zendacross.vega"  // Yahan apna unique package name daal sakte ho
     },
     web: {
       "favicon": "./assets/favicon.png"
     },
     extra: {
       eas: {
-        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se ID daalo (zaruri hai)
+        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se ID daalo (zaruri!)
       }
     },
-    plugins  // Empty plugins
+    plugins  // Empty
   };
 };
