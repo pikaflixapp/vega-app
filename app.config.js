@@ -4,19 +4,12 @@ const hasAndroidGoogleServices = fs.existsSync('./google-services.json');
 const hasIosGooglePlist = fs.existsSync('./GoogleService-Info.plist');
 
 module.exports = () => {
-  const plugins = [
-    // './plugins/android-native-config.js',
-    // './plugins/with-android-notification-icons.js',
-    // './plugins/with-android-splash-screen.js',
-    // './plugins/with-android-widgets.js',
-    // './plugins/with-updates.js',
-    // './plugins/with-gradle-properties.js',
-  ];
+  const plugins = [];  // Empty array bana do (sab plugins hata do)
 
   return {
-    name: "Pikashow",  // Yahan tum apna naya name daal sakte ho agar chaaho
-    slug: "vega-app",
-    version: "2.3.1",
+    name: "Pikashow",  // Yahan tum apna naya name daal sakte ho (jaise "PikaFlix")
+    slug: "pikashow",
+    version: "1.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "automatic",
@@ -39,16 +32,16 @@ module.exports = () => {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"
       },
-      "package": "com.zendacross.vega"
+      "package": "com.zendacross.vega"  // Yahan tum apna package name change kar sakte ho agar chaaho
     },
     web: {
       "favicon": "./assets/favicon.png"
     },
     extra: {
       eas: {
-        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se ID daalo
+        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se ID daalo (zaruri hai)
       }
     },
-    plugins
+    plugins  // Empty plugins
   };
 };
