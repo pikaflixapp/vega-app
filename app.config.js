@@ -5,7 +5,6 @@ const hasIosGooglePlist = fs.existsSync('./GoogleService-Info.plist');
 
 module.exports = () => {
   const plugins = [
-    // Custom local plugins comment out kar do ya remove (yeh error ka cause hain)
     // './plugins/android-native-config.js',
     // './plugins/with-android-notification-icons.js',
     // './plugins/with-android-splash-screen.js',
@@ -15,9 +14,9 @@ module.exports = () => {
   ];
 
   return {
-    name: "Pikashow",
-    slug: "pikashow",
-    version: "1.0",
+    name: "Pikashow",  // Yahan tum apna naya name daal sakte ho agar chaaho
+    slug: "vega-app",
+    version: "2.3.1",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "automatic",
@@ -47,7 +46,7 @@ module.exports = () => {
     },
     extra: {
       eas: {
-        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se copy kar ke daalo
+        projectId: "0f3f82d9-f30c-4ddc-a30c-98cdd0fadf04"  // Dashboard se ID daalo
       }
     },
     plugins
