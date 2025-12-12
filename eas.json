@@ -11,6 +11,7 @@
       },
       "prebuildCommand": "npx expo prebuild --clean --platform android"
     },
-    // Baaki profiles...
+    
   }
 }
+
